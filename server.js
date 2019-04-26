@@ -125,32 +125,10 @@ const findMarkAndDelete = function() {
         })
 }
 
-const findKennyAndDelete = function() {
-    // find specific user and delete
-    return User.findOne({ username: 'Kenny_the_boy' })
-        .then(function(user) {
-            return user.remove(function() {
-                console.log('User successfully deleted');
-            });
-        });
-}
-
-const findBennyAndRemove = function() {
-    // find specific user and delete
-    return User.findOneAndRemove({ username: 'Benny_the_man' })
-        .then(function(user) {
-            return user.remove(function() {
-                console.log('User successfully deleted');
-            });
-        });
-}
-
 Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findAllUsers)
     .then(findSpecificRecord)
     .then(updadeUserPassword)
     .then(updateUsername)
     .then(findMarkAndDelete)
-    .then(findKennyAndDelete)
-    .then(findBennyAndRemove)
     .catch(console.log.bind(console))
